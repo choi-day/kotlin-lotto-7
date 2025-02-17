@@ -15,10 +15,10 @@ object ActionController {
 
         Output.printTicketNumber(getPurchaseNumber(purchase))
 
-        return  purchase
+        return purchase
     }
 
-    fun getLottoTicketsResult(){
+    fun getLottoTicketsResult() {
         val lottoTickets = LottoTickets(getPurchaseNumber(startLotto()))
 
         Output.printTickets(lottoTickets.getLottoTicket())
