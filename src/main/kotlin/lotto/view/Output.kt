@@ -1,5 +1,6 @@
 package lotto.view
 
+import lotto.model.Lotto
 import lotto.view.Input.getPurchase
 
 object Output {
@@ -7,5 +8,5 @@ object Output {
 
     fun printTicketNumber() = println("${getPurchase()}개를 구매했습니다.")
 
-    fun printTickets(tickets: ArrayList<List<Int>>) = println(tickets.joinToString("\n"))
+    fun printTickets(tickets: ArrayList<Lotto>) =  println(tickets.joinToString("\n"))
 }

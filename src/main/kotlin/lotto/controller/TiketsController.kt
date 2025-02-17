@@ -9,13 +9,12 @@ private const val MIN_RANGE = 1
 private const val LOTTO_NUMBER_COUNT = 6
 
 object TiketsController {
-    val lottoTickets = LottoTickets(getPurchaseNumber(3000))
     fun getPurchaseNumber(purchase: Int): Int = purchase / 1000
     fun getRandomNumber(): List<Int> =
         Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, LOTTO_NUMBER_COUNT).sorted()
 
-    fun getLottoTickets() {
-        val a = lottoTickets.getLottoTicket()
-        a.forEach { lotto -> println(lotto.getNumbers) }
-    }
+//    fun getLottoTickets() {
+//        val a = lottoTickets.getLottoTicket()
+////        a.forEach { lotto -> println(lotto.getNumbers) }
+//    }
 }
