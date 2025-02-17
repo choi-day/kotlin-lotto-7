@@ -5,5 +5,8 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] 로또 번호는 6개여야 합니다." }
     }
 
-    // TODO: 추가 기능 구현
+    fun getRandoms():List<Int>{
+        numbers.addAll(Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, LOTTO_NUMBER_COUNT).sorted())
+        return numbers
+    }
 }
