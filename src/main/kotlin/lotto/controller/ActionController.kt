@@ -13,7 +13,7 @@ object ActionController {
         val purchase = Input.getPurchase()
 
 
-        Output.printTicketNumber()
+        Output.printTicketNumber(getPurchaseNumber(purchase))
 
         return  purchase
     }
