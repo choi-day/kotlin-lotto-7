@@ -6,7 +6,7 @@ private const val MAX_RANGE = 45
 private const val MIN_RANGE = 1
 private const val LOTTO_NUMBER_COUNT = 6
 
-class TiketsController {
+object TiketsController {
     fun getPurchaseNumber(purchase : Int) : Int =  purchase / 1000
     fun getRandomNumber() : List<Int>  = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, LOTTO_NUMBER_COUNT).sorted()
 }
