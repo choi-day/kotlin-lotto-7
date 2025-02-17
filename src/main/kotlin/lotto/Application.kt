@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.controller.TiketsController
+import lotto.controller.TiketsController.getPurchaseNumber
+import lotto.model.LottoTickets
+
 fun main() {
-    // TODO: 프로그램 구현
+    TiketsController.getLottoTickets()
 }

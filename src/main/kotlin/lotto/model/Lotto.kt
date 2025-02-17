@@ -7,8 +7,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] 로또 번호는 6개여야 합니다." }
     }
 
-    fun getRandoms():List<Int>{
-//        numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, LOTTO_NUMBER_COUNT).sorted()
-        return numbers
-    }
+    val getNumbers: List<Int>
+        get() = numbers
+
 }
