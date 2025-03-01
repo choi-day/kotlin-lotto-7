@@ -1,28 +1,23 @@
 package lotto.controller
 
-import lotto.controller.TiketsController.getPurchaseNumber
 import lotto.model.LottoTickets
+import lotto.model.Purchase
 import lotto.view.Input
 
 import lotto.view.Output
 
 object ActionController {
     fun startLotto(): Int {
-
         Output.printPurchase()
-        val purchase = Input.getPurchase()
-
-
-        Output.printTicketNumber(getPurchaseNumber(purchase))
-
-        return purchase
+        val amount = Input.getAmount()
+        val purcharseCount = Purchase.getPurchaseCount(amount)
+        Output.printTicketNumber(purcharseCount)
+        return amount
     }
 
     fun getLottoTicketsResult() {
-        val lottoTickets = LottoTickets(getPurchaseNumber(startLotto()))
-
-        Output.printTickets(lottoTickets.getLottoTicket())
-
+        val lottoTickets = LottoTickets(startLotto())
+        Output.printTickets(lottoTickets.getLottoTickets())
     }
 
 }
