@@ -1,18 +1,14 @@
 package lotto.model
 
-import lotto.controller.TiketsController
-
+import lotto.util.LottoNumberGenerator
 
 class LottoTickets(val ticketNumber: Int) {
-    var lottoTickets = ArrayList<Lotto>()
 
+    private var lottoTickets = ArrayList<Lotto>()
     fun getLottoTicket(): ArrayList<Lotto> {
-
         for (i in 0..ticketNumber - 1) {
-
-            val lotto = Lotto(TiketsController.getRandomNumber())
+            val lotto = Lotto(LottoNumberGenerator.generator())
             lottoTickets.add(lotto)
-
         }
         return lottoTickets
     }

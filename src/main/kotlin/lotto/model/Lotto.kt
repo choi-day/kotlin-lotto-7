@@ -7,5 +7,4 @@ class Lotto(private val numbers: List<Int>) {
 
     val getNumbers: List<Int>
         get() = numbers
-
 }
