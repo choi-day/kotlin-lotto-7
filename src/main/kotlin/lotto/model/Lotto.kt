@@ -1,5 +1,7 @@
 package lotto.model
 
+import lotto.util.LottoNumberGenerator
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] 로또 번호는 6개여야 합니다." }
@@ -7,4 +9,11 @@ class Lotto(private val numbers: List<Int>) {
 
     val getNumbers: List<Int>
         get() = numbers
+
+    companion object {
+        fun getLotto(): Lotto {
+            val Lotto = Lotto(LottoNumberGenerator.generator())
+            return Lotto
+        }
+    }
 }
