@@ -7,7 +7,7 @@ object Output {
 
     fun printTicketNumberMessage(purcharseCount: Int) = println("${purcharseCount}개를 구매했습니다.")
 
-    fun printTickets(tickets: ArrayList<Lotto>) = tickets.forEach { lotto -> println(lotto.getNumbers) }
+    fun printTickets(tickets: ArrayList<Lotto>) = print(tickets.joinToString("\n"))
 
     fun printWineerNumberMessage() = println("당첨 번호를 입력해 주세요.")
 
