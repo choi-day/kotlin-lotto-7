@@ -8,10 +8,10 @@ import lotto.view.Output
 
 object ActionController {
     fun startLotto(): Int {
-        Output.printPurchase()
+        Output.printPurchaseMessage()
         val amount = Input.getAmount()
         val purcharseCount = Purchase.getPurchaseCount(amount)
-        Output.printTicketNumber(purcharseCount)
+        Output.printTicketNumberMessage(purcharseCount)
         return amount
     }
 
