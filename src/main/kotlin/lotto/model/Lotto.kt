@@ -17,4 +17,8 @@ class Lotto(private val numbers: List<Int>) {
             return Lotto
         }
     }
+
+    fun countSameNumbers(lotto: Lotto): Int {
+        return this.numbers.count{it -> lotto.numbers.contains(it)}
+    }
 }

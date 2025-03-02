@@ -12,12 +12,12 @@ object ActionController {
         val amount = Input.getAmount()
         val purcharseCount = Purchase.getPurchaseCount(amount)
         Output.printTicketNumberMessage(purcharseCount)
-        return amount
+        return purcharseCount
     }
 
-    fun getLottoTicketsResult() {
-        val lottoTickets = LottoTickets(startLotto())
-        Output.printTickets(lottoTickets.getLottoTickets())
+    fun getLottoTickets() {
+        val lottoTickets = LottoTickets(startLotto(), ArrayList())
+        val getLottoTickets = lottoTickets.getLottoTickets()
+        Output.printTickets(getLottoTickets.tickets)
     }
-
 }
