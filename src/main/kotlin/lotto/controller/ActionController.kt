@@ -2,37 +2,56 @@ package lotto.controller
 
 import lotto.model.Lotto
 import lotto.model.LottoTickets
+import lotto.model.Profit
 import lotto.model.Purchase
 import lotto.util.WinningResultCalculator
 import lotto.view.Input
 import lotto.view.Output
 
 object ActionController {
-    val lottoTickets = LottoTickets(startLotto(), ArrayList()).getLottoTickets()
+    fun runLotto() {
+        val lottoTickets = LottoTickets(startLotto(), ArrayList()).getLottoTickets()
+        getLottoTickets(lottoTickets)
+        val winnerNumber = getWinnerNumber()
+        val bonusNumber = getBonusNumber()
+        val result = getWinnerResult(lottoTickets, winnerNumber, bonusNumber)
+        getProfit(lottoTickets, result)
+    }
 
-    fun startLotto(): Int {
+    private fun startLotto(): Int {
         Output.printPurchaseMessage()
-        val amount = Input.getAmount()
-        val purcharseCount = Purchase.getPurchaseCount(amount)
+        val purchase = Input.getPurchase()
+        val purcharseCount = Purchase.getPurchaseCount(purchase)
         Output.printTicketNumberMessage(purcharseCount)
         return purcharseCount
     }
 
-    fun getLottoTickets() {
+    private fun getLottoTickets(lottoTickets: LottoTickets) {
         Output.printTickets(lottoTickets.tickets)
     }
 
-    fun getWinnerNumber(): Pair<Lotto, Int> {
+    private fun getWinnerNumber(): Lotto{
         Output.printWineerNumberMessage()
-        val winnerNumber =  Lotto(Input.getWinnerNumber().map { it -> it.toInt() })
-        Output.printBonusNumberMessage()
-        val bonusNumber = Input.getBonusNumber()
-        return Pair(winnerNumber, bonusNumber)
+        val winnerNumber =  Lotto(Input.getWinnerNumber().map { it.toInt() })
+        return winnerNumber
     }
 
-    fun getWinnerResult() {
-        val (winnerNumber, bonusNumber) = getWinnerNumber()
+    private fun getBonusNumber(): Int{
+        Output.printBonusNumberMessage()
+        val bonusNumber = Input.getBonusNumber()
+        return bonusNumber
+    }
+
+    private fun getWinnerResult(lottoTickets: LottoTickets, winnerNumber: Lotto, bonusNumber: Int): Map<Int, Int> {
         val winningResultCalculator = WinningResultCalculator(winnerNumber, bonusNumber, lottoTickets)
         val result = winningResultCalculator.calculcateResult()
+        Output.printWinningResultMessage()
+        Output.printWinningResult(result)
+        return result
+    }
+
+    private fun getProfit(lottoTickets: LottoTickets, result: Map<Int, Int>) {
+        val profit = Profit(lottoTickets.purchaseCount, result)
+        Output.printProfitMessage(profit.calculateProfit())
     }
 }

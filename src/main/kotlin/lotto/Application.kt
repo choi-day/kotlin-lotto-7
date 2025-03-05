@@ -3,5 +3,5 @@ package lotto
 import lotto.controller.ActionController
 
 fun main() {
-    ActionController.getLottoTickets()
+    ActionController.runLotto()
 }
