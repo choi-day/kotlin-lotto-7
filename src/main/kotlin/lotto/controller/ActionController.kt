@@ -58,7 +58,8 @@ object ActionController {
     }
 
     private fun getProfit(lottoTickets: LottoTickets, result: Map<Int, Int>) {
-        val profit = Profit(lottoTickets.purchaseCount, result)
+        val purchase = Purchase(lottoTickets.purchaseCount * 1000)
+        val profit = Profit(purchase, result)
         Output.printProfitMessage(profit.calculateProfit())
     }
 }

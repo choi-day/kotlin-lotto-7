@@ -67,7 +67,7 @@ object NumberValidator {
 
     fun checkSameNumberBonus(winner: Lotto, bonus: Int) {
         require(!winner.checkBonusNumber(bonus)){
-            Error.sameNumberInputBonus
+            Error.sameNumberInputBonus.message
         }
     }
 

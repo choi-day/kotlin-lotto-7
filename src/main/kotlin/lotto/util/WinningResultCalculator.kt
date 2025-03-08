@@ -4,7 +4,7 @@ import lotto.model.Lotto
 import lotto.model.LottoTickets
 
 class WinningResultCalculator(private val winnerNumber: Lotto, private val bonusNumber: Int, private val lottoTickets: LottoTickets) {
-    private val result = mutableMapOf<Int, Int>(3 to 0, 4 to 0, 5 to 0, 6 to 0, 123 to 0)
+    private val result = mutableMapOf(3 to 0, 4 to 0, 5 to 0, 6 to 0, 123 to 0)
     fun calculcateResult(): Map<Int, Int> {
         lottoTickets.tickets.forEach({
             val sameNumberCount = it.countSameNumbers(winnerNumber)
