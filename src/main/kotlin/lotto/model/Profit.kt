@@ -15,6 +15,6 @@ class Profit(private val purchase: Int, private val winningResult: Map<Int, Int>
 
     fun calculateProfit(): Double {
         val winningAmount = calculateWinningAmount().toDouble()
-        return round(winningAmount / purchase * 100 * 10)/10
+        return round(winningAmount / purchase)/10
     }
 }

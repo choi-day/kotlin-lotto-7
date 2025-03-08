@@ -17,15 +17,15 @@ object Output {
     fun printWinningResult(result: Map<Int, Int>) {
         val resultMessage = StringBuilder()
         resultMessage.append("---\n")
-        resultMessage.append("3개 일치 (5,000원) - ${result[3]}\n")
-        resultMessage.append("4개 일치 (50,000원) - ${result[4]}\n")
-        resultMessage.append("5개 일치 (1,500,000원) - ${result[5]}\n")
-        resultMessage.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ${result[123]}\n")
-        resultMessage.append("6개 일치 (2,000,000,000원) - ${result[6]}\n")
+        resultMessage.append("3개 일치 (5,000원) - ${result[3]}개\n")
+        resultMessage.append("4개 일치 (50,000원) - ${result[4]}개\n")
+        resultMessage.append("5개 일치 (1,500,000원) - ${result[5]}개\n")
+        resultMessage.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ${result[123]}개\n")
+        resultMessage.append("6개 일치 (2,000,000,000원) - ${result[6]}개\n")
         println(resultMessage.toString())
     }
 
     fun printProfitMessage(profit: Double) {
-        print("총 수익률은 ${profit}%입니다.")
+        print("총 수익률은 ${String.format("%.1f", profit)}%입니다.")
     }
 }

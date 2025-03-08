@@ -4,24 +4,27 @@ import lotto.model.Lotto
 import lotto.model.LottoTickets
 import lotto.model.Profit
 import lotto.model.Purchase
+import lotto.util.NumberValidator
 import lotto.util.WinningResultCalculator
 import lotto.view.Input
 import lotto.view.Output
 
 object ActionController {
     fun runLotto() {
-        val lottoTickets = LottoTickets(startLotto(), ArrayList()).getLottoTickets()
+        val lottoTickets = LottoTickets(getPurchase(), ArrayList()).getLottoTickets()
         getLottoTickets(lottoTickets)
         val winnerNumber = getWinnerNumber()
         val bonusNumber = getBonusNumber()
+        NumberValidator.checkSameNumberBonus(winnerNumber, bonusNumber)
         val result = getWinnerResult(lottoTickets, winnerNumber, bonusNumber)
         getProfit(lottoTickets, result)
     }
 
-    private fun startLotto(): Int {
+    private fun getPurchase(): Int {
         Output.printPurchaseMessage()
         val purchase = Input.getPurchase()
-        val purcharseCount = Purchase.getPurchaseCount(purchase)
+        NumberValidator.purchaseValidator(purchase)
+        val purcharseCount = Purchase.getPurchaseCount(purchase.toInt())
         Output.printTicketNumberMessage(purcharseCount)
         return purcharseCount
     }
@@ -32,14 +35,17 @@ object ActionController {
 
     private fun getWinnerNumber(): Lotto{
         Output.printWineerNumberMessage()
-        val winnerNumber =  Lotto(Input.getWinnerNumber().map { it.toInt() })
+        val getWinnerNumber = Input.getWinnerNumber()
+        NumberValidator.winningNumberValidator(getWinnerNumber)
+        val winnerNumber =  Lotto(getWinnerNumber.map { it.toInt() })
         return winnerNumber
     }
 
     private fun getBonusNumber(): Int{
         Output.printBonusNumberMessage()
         val bonusNumber = Input.getBonusNumber()
-        return bonusNumber
+        NumberValidator.bonusNumberValidator(bonusNumber)
+        return bonusNumber.toInt()
     }
 
     private fun getWinnerResult(lottoTickets: LottoTickets, winnerNumber: Lotto, bonusNumber: Int): Map<Int, Int> {
