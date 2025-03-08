@@ -22,9 +22,10 @@ object ActionController {
 
     private fun getPurchase(): Int {
         Output.printPurchaseMessage()
-        val purchase = Input.getPurchase()
-        NumberValidator.purchaseValidator(purchase)
-        val purcharseCount = Purchase.getPurchaseCount(purchase.toInt())
+        val getPurchase = Input.getPurchase()
+        NumberValidator.purchaseValidator(getPurchase)
+        val purchase = Purchase(getPurchase.toInt())
+        val purcharseCount = purchase.getPurchaseCount()
         Output.printTicketNumberMessage(purcharseCount)
         return purcharseCount
     }

@@ -18,7 +18,7 @@ class WinningResultCalculator(private val winnerNumber: Lotto, private val bonus
         return result
     }
 
-    fun bonusResult(lotto: Lotto) : Map<Int, Int> {
+    private fun bonusResult(lotto: Lotto) : Map<Int, Int> {
         if (lotto.checkBonusNumber(bonusNumber)) {
             result[123] = result[0]!!.plus(1)
             println(lotto)
@@ -28,7 +28,7 @@ class WinningResultCalculator(private val winnerNumber: Lotto, private val bonus
         return result
     }
 
-    fun countResult(key: Int) : Map<Int, Int> {
+    private fun countResult(key: Int) : Map<Int, Int> {
         if(result.containsKey(key)) {
             result[key] = result[key]!!.plus(1)
             return result
