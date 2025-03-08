@@ -20,7 +20,7 @@ class WinningResultCalculator(private val winnerNumber: Lotto, private val bonus
 
     private fun bonusResult(lotto: Lotto) : Map<Int, Int> {
         if (lotto.checkBonusNumber(bonusNumber)) {
-            result[123] = result[0]!!.plus(1)
+            result[123] = result[123]!!.plus(1)
             println(lotto)
             return result
         }
